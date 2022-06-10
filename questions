@@ -1,0 +1,23 @@
+//?What would you like to do? Add Department
+//?What is the name of the department? Service
+//ADDED SERVICE TO THE DATABASE
+//?What would you like to do? Add Role
+//?What is the name of the role? Customer Service
+//?What is the the salary of the role? 80000
+//?Which department does the role belong to? Service
+//ADDED CUSTOMER SERVICE TO THE DATABASE
+//?What would you like to do? Add Employee
+//?What is the employee's name? Sam 
+//?What is the employee's last name? Cash
+//?What is the employee's role? Customer Service
+//?Who is the employee's manager? Ashley Saxon
+//ADDED SAM CASH TO THE DATABASE
+//?What would you like to do? Update Employee Role
+//?Which employee's role do you want to update?
+//-Megan Brown
+//-Sara Cox
+//-Sam Cash
+//-Jon Doe
+//-Mike Warne
+//-Ashley Saxon
+//(move up and down to reveal choices)
