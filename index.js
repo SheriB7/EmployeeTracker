@@ -7,9 +7,9 @@ const util = require("util")
 const db = mysql.createConnection(
   {
     host: 'localhost',
-    
+
     user: process.env.USER,
-    
+
     password: process.env.PASSWORD,
     database: process.env.DATABASE
   },
@@ -18,55 +18,63 @@ const db = mysql.createConnection(
 const query = util.promisify(db.query).bind(db)
 
 //view rolls
-const viewAllRoles = async() => {
+const viewAllRoles = async () => {
   try {
-   const response = await query('select * FROM role;') 
+    const response = await query('select * FROM role;')
     console.table(response)
   } catch (error) {
-    console.error(error)    
+    console.error(error)
   }
 }
 viewAllRoles()
 
 //view employees
-const viewAllEmployees = async() => {
+const viewAllEmployees = async () => {
   try {
-   const response = await query('select * FROM employee;') 
+    const response = await query('select * FROM employee;')
     console.table(response)
   } catch (error) {
-    console.error(error)    
+    console.error(error)
   }
 }
 viewAllEmployees()
 
 //view departments
-const viewAllDepartments = async() => {
+const viewAllDepartments = async () => {
   try {
-   const response = await query('select * FROM employee;') 
+    const response = await query('select * FROM employee;')
     console.table(response)
   } catch (error) {
-    console.error(error)    
+    console.error(error)
   }
 }
 viewAllDepartments()
 
-function startprompt() {
-inquirer
-  .prompt([
-    {
-      type: "list",
-      message: "What would you like to do?",
-      name: "choice",
-      choices: [
-        "View All Employees?",
-        "View All Employee's By Role?",
-        "View All Employees By Departments",
-        "Update Employee",
-        "Add Employee?",
-        "Add Role",
-        "Add Department?"
-      ]
-    }
+function promptUser() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What would you like to do?",
+        name: "choices",
+        choices: [
+          "View All Employees?",
+          "View All Employee's By Role?",
+          "View All Employees By Departments",
+          "Update Employee",
+          "Add Employee?",
+          "Add Role",
+          "Add Department?"
+        ]
+      }
+    ])
+    //using the value and
+    .then((value) => {
+      console.log(value)
+})
+}
+promptUser()
+
     // {
     //     type: 'input',
     //     message: 'What is your first name?',
