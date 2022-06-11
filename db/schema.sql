@@ -1,26 +1,32 @@
-department
-  id:INT PRIMARY KEY
-  --to hold department name
-  name: VARCHAR(30)
+DROP DATABASE if EXISTS employees_db;
+CREATE DATABASE employees_db;
+USE employees_db;
 
-role
-  id: INT PRIMARY KEY
-  --TO HOLD ROLE TITLE
-  title:VARCHAR(30)
-  --TO HOLD ROLE SALARY
-  salary:DECIMAL
-  --TO HOLD REFERENCE TO DEPARTMENT ROLE BELONGINGS TO
-  department_id:INT
+CREATE TABLE department(
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+  name VARCHAR(30)
+);
 
-employee
-  id:INT PRIMARY KEY
-  --TO HOLD EMPLOYEES FIRST NAME
-  first_name:VARCHAR(30)
-  --TO HOLD EMPLOYEES LAST NAME
-  last_name:VARCHAR(30)
-  --TO HOLD REFERNCE TO EMPLOYEE ROLE
-  role_id:INT
-  --TO HOLD REFERENCE TO ANOTHER EMPLOYEE THAT IS THE MANAGER OF THE CURRENT EMPLOYEE(NULL IF EMPLOYEE HAS NO MANAGER)
+CREATE TABLE role (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(30), 
+  salary DECIMAL,
+    department_id INT,
+  FOREIGN KEY (department_id)
+  REFERENCES department(id)
+  );
+
+CREATE TABLE employee (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  role_id INT,
+  manager_id INT,
+  FOREIGN KEY (role_id)
+  REFERENCES role(id),
+  FOREIGN KEY (manager_id)
+  REFERENCES employee(id)
+);
 
 
 
