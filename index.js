@@ -50,7 +50,7 @@ const viewAllDepartments = async () => {
 }
 viewAllDepartments()
 
-function promptUser() {
+function Launch() {
   inquirer
     .prompt([
       {
@@ -68,12 +68,62 @@ function promptUser() {
         ]
       }
     ])
-    //using the value and
-    .then((value) => {
-      console.log(value)
-})
+//     //using the value and
+//     .then((value) => {
+//       console.log(value)
+// })
+
+// Launch()
+
+.then((answers) => {
+  const {choices} = answers;
+  if(choices === "View all departments") {
+    showDepartments();
+  }
+  if(choices === "View all roles") {
+    showRoles();
+  }
+  if(choices === "View all employes") {
+    showEmployes();
+  }
+  if(choices === "Add a department") {
+    showDepartment();
+  }
+  if(choices === "Add a role") {
+    showRoll();
+  }
+  if(choices === "Add a employee") {
+    showEmployee();
+  }
+  if (choices === "Update an employee role") {
+    updateEmployee();
+  }
+  if (choices === "Update an employee manager") {
+    updateManager();
+  }
+  if (choices === "View employees by department") {
+    employeeDepartment();
+  }
+  if (choices === "Delete a department") {
+    deleteDepartment();
+  }
+  if (choices === "Delete a role") {
+    deleteRole();
+  }
+  if (choices === "Delete an employee") {
+    deleteEmployee();
+  }
+  if (choices === "View department budgets") {
+    viewBudget();
+  }
+  if (choices === "No Action") {
+    connection.end()
+};  
+});
 }
-promptUser()
+
+
+
 
     // {
     //     type: 'input',
