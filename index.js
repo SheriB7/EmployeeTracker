@@ -20,10 +20,64 @@ const query = util.promisify(db.query).bind(db)
 //view rolls
 const viewAllRoles = async() => {
   try {
-   const response = await query("select * FROM role;") 
-   console.table(response)
+   const response = await query('select * FROM role;') 
+    console.table(response)
   } catch (error) {
     console.error(error)    
   }
 }
 viewAllRoles()
+
+//view employees
+const viewAllEmployees = async() => {
+  try {
+   const response = await query('select * FROM employee;') 
+    console.table(response)
+  } catch (error) {
+    console.error(error)    
+  }
+}
+viewAllEmployees()
+
+//view departments
+const viewAllDepartments = async() => {
+  try {
+   const response = await query('select * FROM employee;') 
+    console.table(response)
+  } catch (error) {
+    console.error(error)    
+  }
+}
+viewAllDepartments()
+
+function startprompt() {
+inquirer
+  .prompt([
+    {
+      type: "list",
+      message: "What would you like to do?",
+      name: "choice",
+      choices: [
+        "View All Employees?",
+        "View All Employee's By Role?",
+        "View All Employees By Departments",
+        "Update Employee",
+        "Add Employee?",
+        "Add Role",
+        "Add Department?"
+      ]
+    }
+    // {
+    //     type: 'input',
+    //     message: 'What is your first name?',
+    //     name: 'first',
+    //   },
+    //   {
+    //     type: 'input',
+    //     message: 'What is your last name?',
+    //     name: 'last',
+    //   },
+
+    // ])
+
+
