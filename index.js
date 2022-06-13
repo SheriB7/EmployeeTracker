@@ -18,7 +18,7 @@ const db = mysql.createConnection(
 const query = util.promisify(db.query).bind(db)
 
 // Create welcome page
-var figlet = require('figlet');
+const figlet = require('figlet');
 
 figlet('Employee Manager!', function (err, data) {
   if (err) {
