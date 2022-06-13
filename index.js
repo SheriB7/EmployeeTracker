@@ -94,8 +94,8 @@ function promptStart() {
 
 
 
-    .then((answers) => {
-      const { choices } = answers;
+    .then((questions) => {
+      const { choices } = questions;
       if (choices === "View all departments") {
         showDepartments();
       }
