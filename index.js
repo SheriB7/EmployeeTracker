@@ -17,6 +17,19 @@ const db = mysql.createConnection(
 );
 const query = util.promisify(db.query).bind(db)
 
+// Create welcome page
+var figlet = require('figlet');
+
+figlet('Employee Manager!', function (err, data) {
+  if (err) {
+    console.log('Something went wrong...');
+    console.dir(err);
+    return;
+  }
+  console.log(data)
+});
+
+
 //view rolls
 const viewAllRoles = async () => {
   try {
@@ -50,7 +63,9 @@ const viewAllDepartments = async () => {
 }
 viewAllDepartments()
 
-function Launch() {
+//first action
+
+function promptStart() {
   inquirer
     .prompt([
       {
@@ -58,84 +73,98 @@ function Launch() {
         message: "What would you like to do?",
         name: "choices",
         choices: [
+          "View ALL Departments",
+          "View All Roles?",
           "View All Employees?",
-          "View All Employee's By Role?",
-          "View All Employees By Departments",
-          "Update Employee",
-          "Add Employee?",
-          "Add Role",
-          "Add Department?"
+          "View All Employees By Manager",
+          "Add an Employee?",
+          "Add a Role",
+          "Add a Department?",
+          "Update Employee"
         ]
       }
     ])
-//     //using the value and
-//     .then((value) => {
-//       console.log(value)
-// })
+    //     //using the value and
+    //     .then((value) => {
+    //       console.log(value)
+    // })
 
-// Launch()
+    // promptStart()
 
-.then((answers) => {
-  const {choices} = answers;
-  if(choices === "View all departments") {
-    showDepartments();
-  }
-  if(choices === "View all roles") {
-    showRoles();
-  }
-  if(choices === "View all employes") {
-    showEmployes();
-  }
-  if(choices === "Add a department") {
-    showDepartment();
-  }
-  if(choices === "Add a role") {
-    showRoll();
-  }
-  if(choices === "Add a employee") {
-    showEmployee();
-  }
-  if (choices === "Update an employee role") {
-    updateEmployee();
-  }
-  if (choices === "Update an employee manager") {
-    updateManager();
-  }
-  if (choices === "View employees by department") {
-    employeeDepartment();
-  }
-  if (choices === "Delete a department") {
-    deleteDepartment();
-  }
-  if (choices === "Delete a role") {
-    deleteRole();
-  }
-  if (choices === "Delete an employee") {
-    deleteEmployee();
-  }
-  if (choices === "View department budgets") {
-    viewBudget();
-  }
-  if (choices === "No Action") {
-    connection.end()
-};  
-});
+
+
+
+    .then((answers) => {
+      const { choices } = answers;
+      if (choices === "View all departments") {
+        showDepartments();
+      }
+      if (choices === "View all roles") {
+        showRoles();
+      }
+      if (choices === "View all employees") {
+        showEmployes();
+      }
+      if (choices === "Add a department") {
+        showDepartment();
+      }
+      if (choices === "Add a role") {
+        showRole();
+      }
+      if (choices === "Add an employee") {
+        showEmployee();
+      }
+      if (choices === "Update an employee role") {
+        updateEmployee();
+      }
+      if (choices === "Update an employee managers") {
+        updateManager();
+      }
+      if (choices === "View employees by manager") {
+        employeeDepartment();
+      }
+      if (choices === "Delete a department") {
+        deleteDepartment();
+      }
+      if (choices === "Delete a role") {
+        deleteRole();
+      }
+      if (choices === "Delete an employee") {
+        deleteEmployee();
+      }
+      if (choices === "View department budgets") {
+        viewBudget();
+      }
+      if (choices === "No Action") {
+        connection.end()
+      };
+    });
 }
+showDepartments = () => {
+  console.log('Showing all departments...\n');
+  const sql = `SELECT department_id AS id, department_name AS department FROM department`;
+
+  connection.promise().query(sql, (err, rows) => {
+    if (err) throw err;
+    console.table(rows);
+    // promptStart();
+  });
+};
+promptStart()
 
 
+//Roles
+showRoles = () => {
+  console.log("Showing all roles...\n");
 
+  const sql = "Select role_id, role_title, department_name AS department FROM role INNER JOIN department ON role.department_id = deparment.id";
 
-    // {
-    //     type: 'input',
-    //     message: 'What is your first name?',
-    //     name: 'first',
-    //   },
-    //   {
-    //     type: 'input',
-    //     message: 'What is your last name?',
-    //     name: 'last',
-    //   },
+  connection.promise().query(sql, (err, rows) => {
+    if (err) throw err;
+    console.table(rows);
+    promptStart();
+  })
+};
 
-    // ])
 
 
