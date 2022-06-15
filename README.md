@@ -16,7 +16,7 @@ Creating an application for a business owner to be able to view and manage the d
 
 
 ## Video Link
-[Link to Example Video](https://drive.google.com/file/d/10EICYJDFMKsYeILGC3rJ-3EukXSZ7YFx/view)
+[Link to Video](https://drive.google.com/file/d/1LZBhMrbXUeJZQbNHFO7oyHbktkvEKzGQ/view)
 
 
  ## Installation 
@@ -35,7 +35,7 @@ The business owner will be able to organize employee, role and department data i
 
 ## Test
 
-A demonstration will be done to show how employees, roles and departments are organized in a table. Owner will be able to add role, department and employee.
+A demonstration will be done to show how employees, roles and departments are organized in a table. Owner will be able to add role, employee and department.
 
 
 
