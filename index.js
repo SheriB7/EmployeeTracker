@@ -39,7 +39,6 @@ const viewAllRoles = async () => {
     console.error(error)
   }
 }
-// viewAllRoles()
 
 //view employees
 const viewAllEmployees = async () => {
@@ -50,12 +49,8 @@ const viewAllEmployees = async () => {
     console.error(error)
   }
 }
-// viewAllEmployees()
-
-//view departments
-// viewAllDepartments()
-
 //first action
+// viewAllDepartments()
 
 const promptStart = async () => {
   const data = await inquirer
@@ -180,10 +175,7 @@ const showEmployees = async () => {
   promptStart()
 };
 
-
 // add Department
-
-
 const addDepartment = async () => {
   const answers = await inquirer.prompt([
     {
@@ -234,7 +226,6 @@ const addRole = async () => {
   await query(sql2, [answers.title, answers.salary, answers.department_id])
   showRoles()
 }
-
 promptStart()
 
 
