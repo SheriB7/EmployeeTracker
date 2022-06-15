@@ -22,7 +22,7 @@ const figlet = require('figlet');
 
 figlet('Employee Manager!', function (err, data) {
   if (err) {
-    console.log('Something went wrong...');
+    console.log('Goodbye');
     console.dir(err);
     return;
   }
@@ -116,7 +116,7 @@ const promptStart = async () => {
   if (choices === "View department budgets") {
     return viewBudget();
   }
-  if (choices === "No Action") {
+  if (choices === "End Application") {
     return db.end()
   };
   //});
